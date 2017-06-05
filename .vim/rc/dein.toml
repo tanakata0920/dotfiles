@@ -11,6 +11,15 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+
+[[plugins]]
+repo = 'evidens/vim-twig'
+
+
 # git clone 後、実行すべきコマンドがある場合はこんな感じ
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
