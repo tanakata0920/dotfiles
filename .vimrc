@@ -11,6 +11,8 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
+
+
 " 設定開始
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
@@ -34,3 +36,25 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+
+
+"#####初期設定#####
+syntax on "コードの色分け
+colorscheme molokai
+set t_Co=256
+"#####表示設定#####
+set autoindent "新しい行のインデントを現在行と同じにする
+set expandtab "タブで挿入する文字をスペースに
+set number "行番号を表示する
+set title "編集中のファイル名を表示
+"set cursorline "カーソルのある行にアンダーラインを引く
+set showmatch "括弧入力時の対応する括弧を表示
+set tabstop=4 "インデントをスペース4つ分に設定
+set shiftwidth=4 "自動インデントの幅
+set smartindent "オートインデント
+set smarttab "新しい行を作った時に高度な自動インデント
+set clipboard=unnamed,autoselect "OSのクリッポボードと連携
+set matchpairs& matchpairs+=<:> "対応カッコに＜＞を追加
+set backspace=eol,indent,start
+autocmd VimEnter * execute 'NERDTree'
