@@ -91,4 +91,5 @@ set clipboard=unnamed,autoselect "OSのクリッポボードと連携
 set matchpairs& matchpairs+=<:> "対応カッコに＜＞を追加
 set backspace=eol,indent,start
 set mouse=a
+set noswapfile
 autocmd VimEnter * execute 'NERDTree'
