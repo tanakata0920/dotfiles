@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/web/homes/unit/tanakata/php_include'
 let g:netrw_dirhist_2='/web/homes/unit/tanakata/htdocs'
+let g:netrw_dirhist_3='/web/homes/unit/tanakata/php_include'
+let g:netrw_dirhist_4='/home/tanakata/projects'
+let g:netrw_dirhist_5='/web/homes/unit/tanakata/php_include'
