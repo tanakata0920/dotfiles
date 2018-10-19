@@ -1,7 +1,10 @@
 "---------------------------------------------------
 " NeoBundles Setting
 "---------------------------------------------------
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+if has('vim_starting')
+  set nocompatible               " be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
@@ -50,7 +53,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'KohPoll/vim-less'
 
 " go highlight etc.
-"NeoBundle 'fatih/vim-go'
+NeoBundle 'fatih/vim-go'
 
 " javascript indenting
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -72,6 +75,7 @@ call neobundle#end()
 filetype plugin indent on
 
 NeoBundleCheck
+
 
 """""""""""""""""""""""""""""""""""""""""""
 " オプションの設定
@@ -274,8 +278,8 @@ let g:quickrun_config = {
 command! Ql :call QRunRspecCurrentLine()
 fun! QRunRspecCurrentLine()
   let line = line(".")
-exe ":QuickRun -exec 'bundle exec rspec %s%o' -cmdopt ':" . line . " -cfd'"
-endfu
+  exe ":QuickRun -exec '%c %s%o' -cmdopt ':" . line . " -cfd'"
+endfun
 
 command! Qf :call QRunRspecCurrentFile()
 fun! QRunRspecCurrentFile()
@@ -293,8 +297,8 @@ let g:syntastic_jade_checkers = ['jade_lint']
 augroup JsConfig
   autocmd!
   ""autocmd BufWrite *.{js,json,jade} :Autoformat
-"  autocmd BufWrite *.{js,json,jade} :SyntasticCheck
-"  autocmd BufWrite *.{js,json,jade} :Errors
+  autocmd BufWrite *.{js,json,jade} :SyntasticCheck
+  autocmd BufWrite *.{js,json,jade} :Errors
 augroup END
 
 "=================================================================================
@@ -380,7 +384,9 @@ command! -nargs=+ -bang -complete=file Rename let pbnr=fnamemodify(bufname('%'),
 
 " vim起動時にNERDTree表示
 " ファイル指定で開かれた場合はNERDTreeは表示しない
-autocmd vimenter * NERDTree
+if !argc()
+  autocmd vimenter * NERDTree
+endif
 
 " shift + o で、改行を挿入（insertにしない）
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
@@ -399,9 +405,9 @@ au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " インデント設定
 " オートコンパイル
   "保存と同時にコンパイルする
-""autocmd BufWritePost *.coffee silent make! 
+autocmd BufWritePost *.coffee silent make! 
   "エラーがあったら別ウィンドウで表示
-""autocmd QuickFixCmdPost * nested cwindow | redraw! 
+autocmd QuickFixCmdPost * nested cwindow | redraw! 
 " Ctrl-cで右ウィンドウにコンパイル結果を一時表示する
 nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
 
@@ -410,3 +416,4 @@ set fileencodings=utf-8,euc-jp
 """"" ここまで
 " filetypeの自動検出(最後の方に書いた方がいいらしい)
 filetype on
+autocmd VimEnter * execute 'NERDTree'

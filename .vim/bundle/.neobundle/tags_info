@@ -11,6 +11,7 @@ vim-autoformat
 vim-coffee-script
 vim-endwise
 vim-fugitive
+vim-go
 vim-indent-guides
 vim-jade
 vim-javascript-syntax
