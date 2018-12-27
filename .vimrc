@@ -48,7 +48,7 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 " less用のsyntaxハイライト
 NeoBundle 'KohPoll/vim-less'
-
+NeoBundle 'tomasr/molokai'
 " go highlight etc.
 "NeoBundle 'fatih/vim-go'
 
@@ -274,7 +274,7 @@ let g:quickrun_config = {
 command! Ql :call QRunRspecCurrentLine()
 fun! QRunRspecCurrentLine()
   let line = line(".")
-exe ":QuickRun -exec 'bundle exec rspec %s%o' -cmdopt ':" . line . " -cfd'"
+exe ":QuickRun -exec 'rspec %s%o' -cmdopt ':" . line . " -cfd'"
 endfu
 
 command! Qf :call QRunRspecCurrentFile()
